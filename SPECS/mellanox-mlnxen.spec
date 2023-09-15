@@ -1,6 +1,6 @@
-%global package_speccommit 2edf4c4541eea4bcce6d9d1fbd71806a89988657
+%global package_speccommit f1a33c5222360a91ef4db7431dcaf0c95854b0f6
 %global usver 5.4_1.0.3.0
-%global xsver 3
+%global xsver 4
 %global xsrel %{xsver}%{?xscount}%{?xshash}
 %global package_srccommit 5.4_1.0.3.0
 %define vendor_name Mellanox
@@ -26,10 +26,11 @@ License: GPLv2
 Source0: mellanox-mlnxen-5.4_1.0.3.0.tar.gz
 
 BuildRequires: gcc
-BuildRequires: kernel-devel
+BuildRequires: kernel-devel >= 4.19.19-8.0.29
 %{?_cov_buildrequires}
 Provides: vendor-driver
 Requires: kernel-uname-r = %{kernel_version}
+Requires: kernel >= 4.19.19-8.0.29
 Requires(post): /usr/sbin/depmod
 Requires(postun): /usr/sbin/depmod
 
@@ -83,6 +84,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Aug 07 2023 Stephen Cheng <stephen.cheng@citrix.com> - 5.4_1.0.3.0-4
+- CP-41018: Use auxiliary.ko in kernel to slove the conflict with intel-ice
+
 * Thu Feb 24 2022 Ross Lagerwall <ross.lagerwall@citrix.com> - 5.4_1.0.3.0-3
 - CP-38416: Enable static analysis
 
