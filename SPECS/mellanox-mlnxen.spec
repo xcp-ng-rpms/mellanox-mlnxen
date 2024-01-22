@@ -1,8 +1,8 @@
-%global package_speccommit f1a33c5222360a91ef4db7431dcaf0c95854b0f6
-%global usver 5.4_1.0.3.0
-%global xsver 4
+%global package_speccommit be1cce316a8f1a042816a88caf5fe97adc385c3f
+%global usver 5.9_0.5.5.0
+%global xsver 2
 %global xsrel %{xsver}%{?xscount}%{?xshash}
-%global package_srccommit 5.4_1.0.3.0
+%global package_srccommit 5.9_0.5.5.0
 %define vendor_name Mellanox
 %define vendor_label mellanox
 %define driver_name mlnxen
@@ -20,10 +20,10 @@
 
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
-Version: 5.4_1.0.3.0
+Version: 5.9_0.5.5.0
 Release: %{?xsrel}%{?dist}
 License: GPLv2
-Source0: mellanox-mlnxen-5.4_1.0.3.0.tar.gz
+Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 
 BuildRequires: gcc
 BuildRequires: kernel-devel >= 4.19.19-8.0.29
@@ -84,8 +84,11 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Sep 25 2023 Stephen Cheng <stephen.cheng@citrix.com> - 5.9_0.5.5.0-2
+- CP-45398: Update to version 5.9-0.5.5.0
+
 * Mon Aug 07 2023 Stephen Cheng <stephen.cheng@citrix.com> - 5.4_1.0.3.0-4
-- CP-41018: Use auxiliary.ko in kernel to slove the conflict with intel-ice
+- CP-41018: Use auxiliary.ko in kernel to resolve the conflict with intel-ice
 
 * Thu Feb 24 2022 Ross Lagerwall <ross.lagerwall@citrix.com> - 5.4_1.0.3.0-3
 - CP-38416: Enable static analysis
