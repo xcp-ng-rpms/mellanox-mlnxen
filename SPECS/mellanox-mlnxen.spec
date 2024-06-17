@@ -21,7 +21,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 5.9_0.5.5.0
-Release: %{?xsrel}%{?dist}
+Release: %{?xsrel}.1%{?dist}
 License: GPLv2
 Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 
@@ -33,6 +33,10 @@ Requires: kernel-uname-r = %{kernel_version}
 Requires: kernel >= 4.19.19-8.0.29
 Requires(post): /usr/sbin/depmod
 Requires(postun): /usr/sbin/depmod
+
+# XCP-ng: virtual provides for mlx4-modules-alt's need
+# Versioned using the date in the compat_base file in the tarball
+Provides: mlx_compat = 20230125
 
 %description
 %{vendor_name} %{driver_name} device drivers for the Linux Kernel
@@ -84,6 +88,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Jun 17 2024 Samuel Verschelde <stormi-xcp@ylix.fr> - 5.9_0.5.5.0-2.1
+- Add mlx_compat virtual provides, needed by mlx4-modules-alt
+
 * Mon Sep 25 2023 Stephen Cheng <stephen.cheng@citrix.com> - 5.9_0.5.5.0-2
 - CP-45398: Update to version 5.9-0.5.5.0
 
