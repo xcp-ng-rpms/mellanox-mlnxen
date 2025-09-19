@@ -1,6 +1,6 @@
-%global package_speccommit be1cce316a8f1a042816a88caf5fe97adc385c3f
+%global package_speccommit 9cc729144e0c510f2692ab9314e5e83a7e81ac3e
 %global usver 5.9_0.5.5.0
-%global xsver 2
+%global xsver 3
 %global xsrel %{xsver}%{?xscount}%{?xshash}
 %global package_srccommit 5.9_0.5.5.0
 %define vendor_name Mellanox
@@ -24,6 +24,7 @@ Version: 5.9_0.5.5.0
 Release: %{?xsrel}.1%{?dist}
 License: GPLv2
 Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
+Patch0: netscaler_everest_xs8_200g.patch
 
 BuildRequires: gcc
 BuildRequires: kernel-devel >= 4.19.19-8.0.29
@@ -88,6 +89,12 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Fri Aug 01 2025 Thierry Escande <thierry.escande@vates.tech> - 5.9_0.5.5.0-3.1
+- Sync with 5.9_0.5.5.0-3
+- *** Upstream changelog ***
+  * Tue Feb 18 2025 Kevin Lampis <klampis@cloud.com> - 5.9_0.5.5.0-3
+  - CP-51825: Enable 50G/100G/200G ethtool link modes for XS8 kernel
+
 * Mon Jun 17 2024 Samuel Verschelde <stormi-xcp@ylix.fr> - 5.9_0.5.5.0-2.1
 - Add mlx_compat virtual provides, needed by mlx4-modules-alt
 
