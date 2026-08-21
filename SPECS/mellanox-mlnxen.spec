@@ -21,7 +21,10 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 5.9_0.5.5.0
-Release: %{?xsrel}.1%{?dist}
+Release: %{?xsrel}.2%{?dist}
+# Built against new kABI after cip rebase
+Requires: xcpng-kernel-kabi = 4.19.325-cip134+
+
 License: GPLv2
 Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 Patch0: netscaler_everest_xs8_200g.patch
@@ -89,6 +92,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Aug 31 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.9_0.5.5.0-3.2
+- Rebuild for kernel v4.19.325-cip134
+
 * Fri Aug 01 2025 Thierry Escande <thierry.escande@vates.tech> - 5.9_0.5.5.0-3.1
 - Sync with 5.9_0.5.5.0-3
 - *** Upstream changelog ***
