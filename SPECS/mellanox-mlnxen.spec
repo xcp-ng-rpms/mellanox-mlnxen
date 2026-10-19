@@ -21,10 +21,13 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 5.9_0.5.5.0
-Release: %{?xsrel}.1%{?dist}
+Release: %{?xsrel}.2%{?dist}
 License: GPLv2
 Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 Patch0: netscaler_everest_xs8_200g.patch
+
+# XCP-ng patches
+Patch1000: 0001-XCPNG-3932-Disable-management-PF-support.patch
 
 BuildRequires: gcc
 BuildRequires: kernel-devel >= 4.19.19-8.0.29
@@ -89,6 +92,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Oct 19 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 5.9_0.5.5.0-3.2
+- Fix issue with ConnextX4 cards where their eth/rdma PF function would not come up
+
 * Fri Aug 01 2025 Thierry Escande <thierry.escande@vates.tech> - 5.9_0.5.5.0-3.1
 - Sync with 5.9_0.5.5.0-3
 - *** Upstream changelog ***
