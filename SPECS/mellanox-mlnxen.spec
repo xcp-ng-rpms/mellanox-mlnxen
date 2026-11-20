@@ -21,7 +21,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 5.9_0.5.5.0
-Release: %{?xsrel}.2.0.kernelpreview.1%{?dist}
+Release: %{?xsrel}.2.0.kernelpreview.1.0.testv0.1%{?dist}
 License: GPLv2
 Source0: mellanox-mlnxen-5.9_0.5.5.0.tar.gz
 Patch0: netscaler_everest_xs8_200g.patch
